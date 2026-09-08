@@ -71,6 +71,7 @@ class TranslationsPl extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$pl relays = _Translations$relays$pl._(_root);
 	@override late final _Translations$offerNotifications$pl offerNotifications = _Translations$offerNotifications$pl._(_root);
 	@override late final _Translations$altstore$pl altstore = _Translations$altstore$pl._(_root);
+	@override late final _Translations$bankingApps$pl bankingApps = _Translations$bankingApps$pl._(_root);
 }
 
 // Path: app
@@ -516,6 +517,17 @@ class _Translations$altstore$pl extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => 'Zainstaluj ${app}';
 	@override String step2Button({required Object app}) => 'Zainstaluj ${app}';
 	@override String get step2Fallback => 'Nie działa? Wklej źródło do AltStore';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$pl extends Translations$bankingApps$en {
+	_Translations$bankingApps$pl._(TranslationsPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Aplikacje bankowe widzą Bitblik';
+	@override String get warning => 'Zauważyliśmy, że masz zainstalowane aplikacje bankowe, które wysyłają na swoje serwery listę wszystkich zainstalowanych aplikacji. Banki mogą uniemożliwić Ci wypłatę gotówki z bankomatu kodem, jeśli wykryją, że masz zainstalowaną aplikację Bitblik. Zalecamy całkowite usunięcie tej aplikacji i korzystanie z wersji webowej albo przeniesienie jej do innego profilu użytkownika, aby aplikacje bankowe jej nie widziały. Jeśli widzisz to ostrzeżenie przy uruchomieniu, oznacza to, że aplikacje bankowe widzą aplikację Bitblik.';
 }
 
 // Path: common.buttons
@@ -4049,6 +4061,8 @@ extension on TranslationsPl {
 			'altstore.step2Title' => ({required Object app}) => 'Zainstaluj ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Zainstaluj ${app}',
 			'altstore.step2Fallback' => 'Nie działa? Wklej źródło do AltStore',
+			'bankingApps.title' => 'Aplikacje bankowe widzą Bitblik',
+			'bankingApps.warning' => 'Zauważyliśmy, że masz zainstalowane aplikacje bankowe, które wysyłają na swoje serwery listę wszystkich zainstalowanych aplikacji. Banki mogą uniemożliwić Ci wypłatę gotówki z bankomatu kodem, jeśli wykryją, że masz zainstalowaną aplikację Bitblik. Zalecamy całkowite usunięcie tej aplikacji i korzystanie z wersji webowej albo przeniesienie jej do innego profilu użytkownika, aby aplikacje bankowe jej nie widziały. Jeśli widzisz to ostrzeżenie przy uruchomieniu, oznacza to, że aplikacje bankowe widzą aplikację Bitblik.',
 			_ => null,
 		};
 	}

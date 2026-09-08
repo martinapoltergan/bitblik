@@ -71,6 +71,7 @@ class TranslationsDe extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$de relays = _Translations$relays$de._(_root);
 	@override late final _Translations$offerNotifications$de offerNotifications = _Translations$offerNotifications$de._(_root);
 	@override late final _Translations$altstore$de altstore = _Translations$altstore$de._(_root);
+	@override late final _Translations$bankingApps$de bankingApps = _Translations$bankingApps$de._(_root);
 }
 
 // Path: app
@@ -516,6 +517,17 @@ class _Translations$altstore$de extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => '${app} installieren';
 	@override String step2Button({required Object app}) => '${app} installieren';
 	@override String get step2Fallback => 'Funktioniert immer noch nicht? Füge die Quelle in AltStore ein';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$de extends Translations$bankingApps$en {
+	_Translations$bankingApps$de._(TranslationsDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Banking-Apps sehen Bitblik';
+	@override String get warning => 'Uns ist aufgefallen, dass Sie Banking-Apps installiert haben, die die Liste aller installierten Anwendungen an ihre Server senden. Banken können die Bargeldabhebung per Code am Geldautomaten sperren, wenn sie feststellen, dass Sie die Bitblik-App installiert haben. Wir empfehlen, diese App vollständig zu löschen und die Web-Version zu verwenden oder sie in ein anderes Benutzerprofil zu verschieben, damit die Banking-Apps sie nicht sehen. Wenn Sie diese Warnung beim Start sehen, bedeutet das, dass die Banking-Apps die Bitblik-App sehen können.';
 }
 
 // Path: common.buttons
@@ -4105,6 +4117,8 @@ extension on TranslationsDe {
 			'altstore.step2Title' => ({required Object app}) => '${app} installieren',
 			'altstore.step2Button' => ({required Object app}) => '${app} installieren',
 			'altstore.step2Fallback' => 'Funktioniert immer noch nicht? Füge die Quelle in AltStore ein',
+			'bankingApps.title' => 'Banking-Apps sehen Bitblik',
+			'bankingApps.warning' => 'Uns ist aufgefallen, dass Sie Banking-Apps installiert haben, die die Liste aller installierten Anwendungen an ihre Server senden. Banken können die Bargeldabhebung per Code am Geldautomaten sperren, wenn sie feststellen, dass Sie die Bitblik-App installiert haben. Wir empfehlen, diese App vollständig zu löschen und die Web-Version zu verwenden oder sie in ein anderes Benutzerprofil zu verschieben, damit die Banking-Apps sie nicht sehen. Wenn Sie diese Warnung beim Start sehen, bedeutet das, dass die Banking-Apps die Bitblik-App sehen können.',
 			_ => null,
 		};
 	}

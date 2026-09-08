@@ -72,6 +72,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$relays$en relays = Translations$relays$en.internal(_root);
 	late final Translations$offerNotifications$en offerNotifications = Translations$offerNotifications$en.internal(_root);
 	late final Translations$altstore$en altstore = Translations$altstore$en.internal(_root);
+	late final Translations$bankingApps$en bankingApps = Translations$bankingApps$en.internal(_root);
 }
 
 // Path: app
@@ -641,6 +642,21 @@ class Translations$altstore$en {
 
 	/// en: 'Still not working? Paste the source into AltStore'
 	String get step2Fallback => 'Still not working? Paste the source into AltStore';
+}
+
+// Path: bankingApps
+class Translations$bankingApps$en {
+	Translations$bankingApps$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Banking apps can see Bitblik'
+	String get title => 'Banking apps can see Bitblik';
+
+	/// en: 'We noticed you have banking apps installed that send the list of all installed applications to their servers. Banks may block ATM code withdrawals if they find that you have the Bitblik app installed. We recommend deleting this app entirely and using the web version, or moving it to a different user profile so the banking apps cannot see it. If you see this warning at startup, it means the banking apps can see the Bitblik app.'
+	String get warning => 'We noticed you have banking apps installed that send the list of all installed applications to their servers. Banks may block ATM code withdrawals if they find that you have the Bitblik app installed. We recommend deleting this app entirely and using the web version, or moving it to a different user profile so the banking apps cannot see it. If you see this warning at startup, it means the banking apps can see the Bitblik app.';
 }
 
 // Path: common.buttons
@@ -6699,6 +6715,8 @@ extension on Translations {
 			'altstore.step2Title' => ({required Object app}) => 'Install ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Install ${app}',
 			'altstore.step2Fallback' => 'Still not working? Paste the source into AltStore',
+			'bankingApps.title' => 'Banking apps can see Bitblik',
+			'bankingApps.warning' => 'We noticed you have banking apps installed that send the list of all installed applications to their servers. Banks may block ATM code withdrawals if they find that you have the Bitblik app installed. We recommend deleting this app entirely and using the web version, or moving it to a different user profile so the banking apps cannot see it. If you see this warning at startup, it means the banking apps can see the Bitblik app.',
 			_ => null,
 		};
 	}

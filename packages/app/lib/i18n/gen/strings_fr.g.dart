@@ -71,6 +71,7 @@ class TranslationsFr extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$fr relays = _Translations$relays$fr._(_root);
 	@override late final _Translations$offerNotifications$fr offerNotifications = _Translations$offerNotifications$fr._(_root);
 	@override late final _Translations$altstore$fr altstore = _Translations$altstore$fr._(_root);
+	@override late final _Translations$bankingApps$fr bankingApps = _Translations$bankingApps$fr._(_root);
 }
 
 // Path: app
@@ -516,6 +517,17 @@ class _Translations$altstore$fr extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => 'Installer ${app}';
 	@override String step2Button({required Object app}) => 'Installer ${app}';
 	@override String get step2Fallback => 'Toujours pas de succès ? Collez la source dans AltStore';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$fr extends Translations$bankingApps$en {
+	_Translations$bankingApps$fr._(TranslationsFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Les applications bancaires voient Bitblik';
+	@override String get warning => 'Nous avons remarqué que vous avez installé des applications bancaires qui envoient la liste de toutes les applications installées à leurs serveurs. Les banques peuvent vous empêcher de retirer de l\'argent au distributeur avec un code si elles constatent que l\'application Bitblik est installée. Nous vous recommandons de supprimer complètement cette application et d\'utiliser la version web, ou de la déplacer vers un autre profil utilisateur afin que les applications bancaires ne puissent pas la voir. Si vous voyez cet avertissement au démarrage, cela signifie que les applications bancaires voient l\'application Bitblik.';
 }
 
 // Path: common.buttons
@@ -4105,6 +4117,8 @@ extension on TranslationsFr {
 			'altstore.step2Title' => ({required Object app}) => 'Installer ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Installer ${app}',
 			'altstore.step2Fallback' => 'Toujours pas de succès ? Collez la source dans AltStore',
+			'bankingApps.title' => 'Les applications bancaires voient Bitblik',
+			'bankingApps.warning' => 'Nous avons remarqué que vous avez installé des applications bancaires qui envoient la liste de toutes les applications installées à leurs serveurs. Les banques peuvent vous empêcher de retirer de l\'argent au distributeur avec un code si elles constatent que l\'application Bitblik est installée. Nous vous recommandons de supprimer complètement cette application et d\'utiliser la version web, ou de la déplacer vers un autre profil utilisateur afin que les applications bancaires ne puissent pas la voir. Si vous voyez cet avertissement au démarrage, cela signifie que les applications bancaires voient l\'application Bitblik.',
 			_ => null,
 		};
 	}

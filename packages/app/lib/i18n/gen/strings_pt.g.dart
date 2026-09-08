@@ -71,6 +71,7 @@ class TranslationsPt extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$pt relays = _Translations$relays$pt._(_root);
 	@override late final _Translations$offerNotifications$pt offerNotifications = _Translations$offerNotifications$pt._(_root);
 	@override late final _Translations$altstore$pt altstore = _Translations$altstore$pt._(_root);
+	@override late final _Translations$bankingApps$pt bankingApps = _Translations$bankingApps$pt._(_root);
 }
 
 // Path: app
@@ -517,6 +518,17 @@ class _Translations$altstore$pt extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => 'Instalar o ${app}';
 	@override String step2Button({required Object app}) => 'Instalar o ${app}';
 	@override String get step2Fallback => 'Continua sem funcionar? Cole a fonte na AltStore';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$pt extends Translations$bankingApps$en {
+	_Translations$bankingApps$pt._(TranslationsPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'As aplicações bancárias veem o Bitblik';
+	@override String get warning => 'Reparámos que tem instaladas aplicações bancárias que enviam para os seus servidores a lista de todas as aplicações instaladas. Os bancos podem impedi-lo de levantar dinheiro no multibanco com um código se detetarem que tem a aplicação Bitblik instalada. Recomendamos que elimine completamente esta aplicação e use a versão web, ou que a mova para outro perfil de utilizador para que as aplicações bancárias não a vejam. Se vir este aviso no arranque, significa que as aplicações bancárias veem a aplicação Bitblik.';
 }
 
 // Path: common.buttons
@@ -4107,6 +4119,8 @@ extension on TranslationsPt {
 			'altstore.step2Title' => ({required Object app}) => 'Instalar o ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Instalar o ${app}',
 			'altstore.step2Fallback' => 'Continua sem funcionar? Cole a fonte na AltStore',
+			'bankingApps.title' => 'As aplicações bancárias veem o Bitblik',
+			'bankingApps.warning' => 'Reparámos que tem instaladas aplicações bancárias que enviam para os seus servidores a lista de todas as aplicações instaladas. Os bancos podem impedi-lo de levantar dinheiro no multibanco com um código se detetarem que tem a aplicação Bitblik instalada. Recomendamos que elimine completamente esta aplicação e use a versão web, ou que a mova para outro perfil de utilizador para que as aplicações bancárias não a vejam. Se vir este aviso no arranque, significa que as aplicações bancárias veem a aplicação Bitblik.',
 			_ => null,
 		};
 	}

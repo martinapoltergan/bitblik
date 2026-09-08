@@ -1206,3 +1206,10 @@ altstore:
   step2Title: "Nainštaluj ${app}"
   step2Button: "Nainštalovať ${app}"
   step2Fallback: "Stále to nefunguje? Vlož zdroj do AltStore"
+
+# =============================================================================
+# BANKING APP PRIVACY WARNING
+# =============================================================================
+bankingApps:
+  title: "Bankové aplikácie vidia Bitblik"
+  warning: "Všimli sme si, že máte nainštalované bankové aplikácie, ktoré posielajú na server zoznam všetkých nainštalovaných aplikácií. Banky vám môžu znemožniť výber z bankomatu kódom, ak zistia, že máte nainštalovanú Bitblik aplikáciu. Odporúčame túto aplikáciu úplne zmazať a používať webovú verziu alebo ju presunúť do iného užívateľského profilu, aby ju bankové aplikácie nevideli. Ak vidíte pri štarte toto varovanie, znamená to, že bankové aplikácie vidia Bitblik aplikáciu."

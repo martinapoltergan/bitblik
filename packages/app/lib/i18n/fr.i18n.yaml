@@ -1319,3 +1319,10 @@ altstore:
   step2Title: "Installer ${app}"
   step2Button: "Installer ${app}"
   step2Fallback: "Toujours pas de succès ? Collez la source dans AltStore"
+
+# =============================================================================
+# BANKING APP PRIVACY WARNING
+# =============================================================================
+bankingApps:
+  title: "Les applications bancaires voient Bitblik"
+  warning: "Nous avons remarqué que vous avez installé des applications bancaires qui envoient la liste de toutes les applications installées à leurs serveurs. Les banques peuvent vous empêcher de retirer de l'argent au distributeur avec un code si elles constatent que l'application Bitblik est installée. Nous vous recommandons de supprimer complètement cette application et d'utiliser la version web, ou de la déplacer vers un autre profil utilisateur afin que les applications bancaires ne puissent pas la voir. Si vous voyez cet avertissement au démarrage, cela signifie que les applications bancaires voient l'application Bitblik."

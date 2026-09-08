@@ -1318,3 +1318,10 @@ altstore:
   step2Title: "Instalar o ${app}"
   step2Button: "Instalar o ${app}"
   step2Fallback: "Continua sem funcionar? Cole a fonte na AltStore"
+
+# =============================================================================
+# BANKING APP PRIVACY WARNING
+# =============================================================================
+bankingApps:
+  title: "As aplicações bancárias veem o Bitblik"
+  warning: "Reparámos que tem instaladas aplicações bancárias que enviam para os seus servidores a lista de todas as aplicações instaladas. Os bancos podem impedi-lo de levantar dinheiro no multibanco com um código se detetarem que tem a aplicação Bitblik instalada. Recomendamos que elimine completamente esta aplicação e use a versão web, ou que a mova para outro perfil de utilizador para que as aplicações bancárias não a vejam. Se vir este aviso no arranque, significa que as aplicações bancárias veem a aplicação Bitblik."

@@ -69,6 +69,7 @@ class TranslationsSk extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$sk relays = _Translations$relays$sk._(_root);
 	@override late final _Translations$offerNotifications$sk offerNotifications = _Translations$offerNotifications$sk._(_root);
 	@override late final _Translations$altstore$sk altstore = _Translations$altstore$sk._(_root);
+	@override late final _Translations$bankingApps$sk bankingApps = _Translations$bankingApps$sk._(_root);
 }
 
 // Path: app
@@ -490,6 +491,17 @@ class _Translations$altstore$sk extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => 'Nainštaluj ${app}';
 	@override String step2Button({required Object app}) => 'Nainštalovať ${app}';
 	@override String get step2Fallback => 'Stále to nefunguje? Vlož zdroj do AltStore';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$sk extends Translations$bankingApps$en {
+	_Translations$bankingApps$sk._(TranslationsSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bankové aplikácie vidia Bitblik';
+	@override String get warning => 'Všimli sme si, že máte nainštalované bankové aplikácie, ktoré posielajú na server zoznam všetkých nainštalovaných aplikácií. Banky vám môžu znemožniť výber z bankomatu kódom, ak zistia, že máte nainštalovanú Bitblik aplikáciu. Odporúčame túto aplikáciu úplne zmazať a používať webovú verziu alebo ju presunúť do iného užívateľského profilu, aby ju bankové aplikácie nevideli. Ak vidíte pri štarte toto varovanie, znamená to, že bankové aplikácie vidia Bitblik aplikáciu.';
 }
 
 // Path: common.buttons
@@ -3671,6 +3683,8 @@ extension on TranslationsSk {
 			'altstore.step2Title' => ({required Object app}) => 'Nainštaluj ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Nainštalovať ${app}',
 			'altstore.step2Fallback' => 'Stále to nefunguje? Vlož zdroj do AltStore',
+			'bankingApps.title' => 'Bankové aplikácie vidia Bitblik',
+			'bankingApps.warning' => 'Všimli sme si, že máte nainštalované bankové aplikácie, ktoré posielajú na server zoznam všetkých nainštalovaných aplikácií. Banky vám môžu znemožniť výber z bankomatu kódom, ak zistia, že máte nainštalovanú Bitblik aplikáciu. Odporúčame túto aplikáciu úplne zmazať a používať webovú verziu alebo ju presunúť do iného užívateľského profilu, aby ju bankové aplikácie nevideli. Ak vidíte pri štarte toto varovanie, znamená to, že bankové aplikácie vidia Bitblik aplikáciu.',
 			_ => null,
 		};
 	}

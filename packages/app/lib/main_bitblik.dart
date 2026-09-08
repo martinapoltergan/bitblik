@@ -27,6 +27,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:markdown/markdown.dart' as md;
 
 import 'i18n/gen/strings.g.dart'; // Import Slang from new path
+import 'src/services/banking_app_detector.dart';
+import 'src/widgets/banking_app_warning.dart';
 import 'package:bitblik_core/core.dart'; // Needed for OfferStatus enum
 import 'src/config/build_flavor.dart';
 import 'src/config/runtime_config.dart';
@@ -366,6 +368,11 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       } catch (e) {
         Logger.log.e(() => '❌ Error during app initialization: $e');
       }
+
+      // Deliberately outside the try above: whether the user is warned that their
+      // banking apps can see Bitblik must not depend on coordinator discovery having
+      // succeeded. Runs last so it never delays the first frame.
+      unawaited(_maybeWarnAboutBankingApps());
     });
 
     _notificationTapSub = NotificationService().tapStream.listen((tap) {
@@ -453,6 +460,18 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
       return;
     }
     _goToRoute(route);
+  }
+
+  /// Warns, on every start, when a banking app that reports installed packages is
+  /// present. See [showBankingAppWarning] for why this is not shown only once.
+  Future<void> _maybeWarnAboutBankingApps() async {
+    const detector = BankingAppDetector();
+    final found = await detector.installedBankingApps();
+    if (found.isEmpty || !mounted) return;
+    Logger.log.i(() => 'banking apps visible to Bitblik: ${found.join(', ')}');
+    final context = rootNavigatorKey.currentContext;
+    if (context == null || !context.mounted) return;
+    await showBankingAppWarning(context);
   }
 
   void _goToRoute(String route) {

@@ -74,6 +74,20 @@
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
         </intent>
+
+        <!-- Slovak banking apps that report the device's installed-app list to their
+             servers. We only ask whether these exact packages are present so we can warn
+             the user that the banks can see Bitblik and may block code withdrawals.
+
+             Declaring them one by one is deliberate: a finite <package> list needs no
+             QUERY_ALL_PACKAGES permission, and the app learns nothing about anything
+             else installed on the device. -->
+        <package android:name="sk.tb.ib.tatraandroid"/>
+        <package android:name="sk.tb.emv.mobile"/>
+        <package android:name="com.slsp.mtoken"/>
+        <package android:name="sk.slsp.georgego"/>
+        <package android:name="sk.vub.banking"/>
+        <package android:name="sk.vub.mobile"/>
     </queries>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.NFC"/>

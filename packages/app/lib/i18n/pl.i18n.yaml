@@ -1299,3 +1299,10 @@ altstore:
   step2Title: "Zainstaluj ${app}"
   step2Button: "Zainstaluj ${app}"
   step2Fallback: "Nie działa? Wklej źródło do AltStore"
+
+# =============================================================================
+# BANKING APP PRIVACY WARNING
+# =============================================================================
+bankingApps:
+  title: "Aplikacje bankowe widzą Bitblik"
+  warning: "Zauważyliśmy, że masz zainstalowane aplikacje bankowe, które wysyłają na swoje serwery listę wszystkich zainstalowanych aplikacji. Banki mogą uniemożliwić Ci wypłatę gotówki z bankomatu kodem, jeśli wykryją, że masz zainstalowaną aplikację Bitblik. Zalecamy całkowite usunięcie tej aplikacji i korzystanie z wersji webowej albo przeniesienie jej do innego profilu użytkownika, aby aplikacje bankowe jej nie widziały. Jeśli widzisz to ostrzeżenie przy uruchomieniu, oznacza to, że aplikacje bankowe widzą aplikację Bitblik."

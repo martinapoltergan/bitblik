@@ -71,6 +71,7 @@ class TranslationsIt extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$relays$it relays = _Translations$relays$it._(_root);
 	@override late final _Translations$offerNotifications$it offerNotifications = _Translations$offerNotifications$it._(_root);
 	@override late final _Translations$altstore$it altstore = _Translations$altstore$it._(_root);
+	@override late final _Translations$bankingApps$it bankingApps = _Translations$bankingApps$it._(_root);
 }
 
 // Path: app
@@ -516,6 +517,17 @@ class _Translations$altstore$it extends Translations$altstore$en {
 	@override String step2Title({required Object app}) => 'Installa ${app}';
 	@override String step2Button({required Object app}) => 'Installa ${app}';
 	@override String get step2Fallback => 'Non funziona? Incolla la sorgente in AltStore';
+}
+
+// Path: bankingApps
+class _Translations$bankingApps$it extends Translations$bankingApps$en {
+	_Translations$bankingApps$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Le app bancarie vedono Bitblik';
+	@override String get warning => 'Abbiamo notato che hai installato app bancarie che inviano ai loro server l\'elenco di tutte le applicazioni installate. Le banche possono impedirti di prelevare contante al bancomat con un codice se rilevano che hai installato l\'app Bitblik. Ti consigliamo di eliminare completamente questa app e di usare la versione web, oppure di spostarla in un altro profilo utente in modo che le app bancarie non possano vederla. Se vedi questo avviso all\'avvio, significa che le app bancarie vedono l\'app Bitblik.';
 }
 
 // Path: common.buttons
@@ -4055,6 +4067,8 @@ extension on TranslationsIt {
 			'altstore.step2Title' => ({required Object app}) => 'Installa ${app}',
 			'altstore.step2Button' => ({required Object app}) => 'Installa ${app}',
 			'altstore.step2Fallback' => 'Non funziona? Incolla la sorgente in AltStore',
+			'bankingApps.title' => 'Le app bancarie vedono Bitblik',
+			'bankingApps.warning' => 'Abbiamo notato che hai installato app bancarie che inviano ai loro server l\'elenco di tutte le applicazioni installate. Le banche possono impedirti di prelevare contante al bancomat con un codice se rilevano che hai installato l\'app Bitblik. Ti consigliamo di eliminare completamente questa app e di usare la versione web, oppure di spostarla in un altro profilo utente in modo che le app bancarie non possano vederla. Se vedi questo avviso all\'avvio, significa che le app bancarie vedono l\'app Bitblik.',
 			_ => null,
 		};
 	}

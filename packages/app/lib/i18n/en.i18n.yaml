@@ -1481,3 +1481,10 @@ altstore:
   step2Title: "Install ${app}"
   step2Button: "Install ${app}"
   step2Fallback: "Still not working? Paste the source into AltStore"
+
+# =============================================================================
+# BANKING APP PRIVACY WARNING
+# =============================================================================
+bankingApps:
+  title: "Banking apps can see Bitblik"
+  warning: "We noticed you have banking apps installed that send the list of all installed applications to their servers. Banks may block ATM code withdrawals if they find that you have the Bitblik app installed. We recommend deleting this app entirely and using the web version, or moving it to a different user profile so the banking apps cannot see it. If you see this warning at startup, it means the banking apps can see the Bitblik app."
