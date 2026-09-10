@@ -2777,6 +2777,7 @@ class _Translations$twint$waitConfirmation$errors$de extends Translations$twint$
 	// Translations
 	@override String get invalidOfferStateReceived => 'Angebot mit ungültigem Zustand für diesen Bildschirm empfangen. Wird zurückgesetzt.';
 	@override String reportingConflict({required Object details}) => 'Fehler beim Melden des Konflikts: ${details}';
+	@override String get reportingConflictUnconfirmed => 'Die Meldung konnte nicht bestätigt werden — der Koordinator hat nicht rechtzeitig geantwortet. Sie ist höchstwahrscheinlich angekommen. Sende sie nicht erneut; warte kurz und prüfe den Status des Handels, und wende dich an den Support, falls er sich nicht ändert.';
 }
 
 // Path: twint.paymentProcess.states
@@ -3799,6 +3800,7 @@ extension on TranslationsDe {
 			'twint.waitConfirmation.feedback.conflictReported' => 'Konflikt gemeldet. Der Koordinator wird die Situation prüfen.',
 			'twint.waitConfirmation.errors.invalidOfferStateReceived' => 'Angebot mit ungültigem Zustand für diesen Bildschirm empfangen. Wird zurückgesetzt.',
 			'twint.waitConfirmation.errors.reportingConflict' => ({required Object details}) => 'Fehler beim Melden des Konflikts: ${details}',
+			'twint.waitConfirmation.errors.reportingConflictUnconfirmed' => 'Die Meldung konnte nicht bestätigt werden — der Koordinator hat nicht rechtzeitig geantwortet. Sie ist höchstwahrscheinlich angekommen. Sende sie nicht erneut; warte kurz und prüfe den Status des Handels, und wende dich an den Support, falls er sich nicht ändert.',
 			'twint.paymentProcess.title' => 'Zahlungsvorgang',
 			'twint.paymentProcess.waitingForOfferUpdate' => 'Warte auf Statusaktualisierung des Angebots...',
 			'twint.paymentProcess.states.preparing' => 'Zahlung wird vorbereitet...',

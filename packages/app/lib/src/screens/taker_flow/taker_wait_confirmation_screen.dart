@@ -539,16 +539,28 @@ class _TakerWaitConfirmationScreenState
       );
       await apiService.markBlikCharged(offer.id, offer.coordinatorPubkey);
 
-      // if (mounted) {
-      //   final t = Translations.of(context);
-      //   ScaffoldMessenger.of(context).showSnackBar(
-      //     SnackBar(
-      //       content: Text(t.taker.waitConfirmation.feedback.conflictReported),
-      //       backgroundColor: Colors.green,
-      //     ),
-      //   );
-      //   context.go('/taker-conflict', extra: offer.id);
-      // }
+      if (mounted) {
+        final t = Translations.of(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(t.taker.waitConfirmation.feedback.conflictReported),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } on TimeoutException catch (e) {
+      // A timeout says the reply did not arrive, not that the report failed —
+      // and it usually did land. Telling the user it failed sends them off
+      // reporting it again, or worse, believing nobody has their case. Say
+      // exactly what we know instead.
+      Logger.log.w(
+        () => "[TakerWaitConfirmation] charged report timed out: $e",
+      );
+      if (mounted) {
+        final t = Translations.of(context);
+        ref.read(errorProvider.notifier).state =
+            t.taker.waitConfirmation.errors.reportingConflictUnconfirmed;
+      }
     } catch (e) {
       Logger.log.e(
         () => "[TakerWaitConfirmation] Error reporting conflict: $e",

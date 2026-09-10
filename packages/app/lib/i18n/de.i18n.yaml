@@ -841,6 +841,7 @@ twint:
     errors:
       invalidOfferStateReceived: "Angebot mit ungültigem Zustand für diesen Bildschirm empfangen. Wird zurückgesetzt."
       reportingConflict: "Fehler beim Melden des Konflikts: ${details}"
+      reportingConflictUnconfirmed: "Die Meldung konnte nicht bestätigt werden — der Koordinator hat nicht rechtzeitig geantwortet. Sie ist höchstwahrscheinlich angekommen. Sende sie nicht erneut; warte kurz und prüfe den Status des Handels, und wende dich an den Support, falls er sich nicht ändert."
 
   paymentProcess:
     title: Zahlungsvorgang

@@ -2458,6 +2458,7 @@ class _Translations$taker$waitConfirmation$errors$sk extends Translations$taker$
 	// Translations
 	@override String get invalidOfferStateReceived => 'Prijatá ponuka s neplatným stavom pre túto obrazovku. Resetuje sa.';
 	@override String reportingConflict({required Object details}) => 'Chyba pri nahlasovaní konfliktu: ${details}';
+	@override String get reportingConflictUnconfirmed => 'Nahlásenie sa nepodarilo potvrdiť — spojenie s koordinátorom vypršalo. Hlásenie mu pravdepodobne došlo. Neposielaj ho znova, počkaj chvíľu a skontroluj stav obchodu; ak sa nezmení, ozvi sa podpore.';
 }
 
 // Path: taker.paymentProcess.states
@@ -3354,10 +3355,11 @@ extension on TranslationsSk {
 			'taker.waitConfirmation.feedback.conflictReported' => 'Konflikt nahlásený. Koordinátor posúdi situáciu.',
 			'taker.waitConfirmation.errors.invalidOfferStateReceived' => 'Prijatá ponuka s neplatným stavom pre túto obrazovku. Resetuje sa.',
 			'taker.waitConfirmation.errors.reportingConflict' => ({required Object details}) => 'Chyba pri nahlasovaní konfliktu: ${details}',
+			'taker.waitConfirmation.errors.reportingConflictUnconfirmed' => 'Nahlásenie sa nepodarilo potvrdiť — spojenie s koordinátorom vypršalo. Hlásenie mu pravdepodobne došlo. Neposielaj ho znova, počkaj chvíľu a skontroluj stav obchodu; ak sa nezmení, ozvi sa podpore.',
 			'taker.paymentProcess.title' => 'Priebeh platby',
-			'taker.paymentProcess.waitingForOfferUpdate' => 'Čaká sa na aktualizáciu stavu ponuky...',
 			_ => null,
 		} ?? switch (path) {
+			'taker.paymentProcess.waitingForOfferUpdate' => 'Čaká sa na aktualizáciu stavu ponuky...',
 			'taker.paymentProcess.states.preparing' => 'Príprava na odoslanie platby...',
 			'taker.paymentProcess.states.sending' => 'Odosiela sa platba...',
 			'taker.paymentProcess.states.received' => 'Platba prijatá!',

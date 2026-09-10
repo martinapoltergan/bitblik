@@ -2742,6 +2742,7 @@ class _Translations$twint$waitConfirmation$errors$it extends Translations$twint$
 	// Translations
 	@override String get invalidOfferStateReceived => 'Ricevuta un\'offerta con stato non valido per questa schermata. Ripristino in corso.';
 	@override String reportingConflict({required Object details}) => 'Errore nella segnalazione del conflitto: ${details}';
+	@override String get reportingConflictUnconfirmed => 'Non è stato possibile confermare la segnalazione — il coordinatore non ha risposto in tempo. Molto probabilmente è arrivata. Non inviarla di nuovo; attendi un momento e controlla lo stato dello scambio, e contatta l\'assistenza se non cambia.';
 }
 
 // Path: twint.paymentProcess.states
@@ -3752,6 +3753,7 @@ extension on TranslationsIt {
 			'twint.waitConfirmation.feedback.conflictReported' => 'Conflitto segnalato. Il coordinatore esaminerà la situazione.',
 			'twint.waitConfirmation.errors.invalidOfferStateReceived' => 'Ricevuta un\'offerta con stato non valido per questa schermata. Ripristino in corso.',
 			'twint.waitConfirmation.errors.reportingConflict' => ({required Object details}) => 'Errore nella segnalazione del conflitto: ${details}',
+			'twint.waitConfirmation.errors.reportingConflictUnconfirmed' => 'Non è stato possibile confermare la segnalazione — il coordinatore non ha risposto in tempo. Molto probabilmente è arrivata. Non inviarla di nuovo; attendi un momento e controlla lo stato dello scambio, e contatta l\'assistenza se non cambia.',
 			'twint.paymentProcess.title' => 'Processo di Pagamento',
 			'twint.paymentProcess.waitingForOfferUpdate' => 'In attesa dell\'aggiornamento dello stato dell\'offerta...',
 			'twint.paymentProcess.states.preparing' => 'Preparazione invio pagamento...',

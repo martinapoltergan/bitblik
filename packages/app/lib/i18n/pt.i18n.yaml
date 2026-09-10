@@ -840,6 +840,7 @@ twint:
     errors:
       invalidOfferStateReceived: "Recebida uma oferta com um estado inválido para este ecrã. A reiniciar."
       reportingConflict: "Erro ao reportar o conflito: ${details}"
+      reportingConflictUnconfirmed: "Não foi possível confirmar o relato — o coordenador não respondeu a tempo. Muito provavelmente chegou. Não o envie novamente; aguarde um momento e verifique o estado da troca, e contacte o suporte se não mudar."
 
   paymentProcess:
     title: Processo de pagamento

@@ -824,6 +824,7 @@ twint:
     errors:
       invalidOfferStateReceived: "Ricevuta un'offerta con stato non valido per questa schermata. Ripristino in corso."
       reportingConflict: "Errore nella segnalazione del conflitto: ${details}"
+      reportingConflictUnconfirmed: "Non è stato possibile confermare la segnalazione — il coordinatore non ha risposto in tempo. Molto probabilmente è arrivata. Non inviarla di nuovo; attendi un momento e controlla lo stato dello scambio, e contatta l'assistenza se non cambia."
 
   paymentProcess:
     title: Processo di Pagamento

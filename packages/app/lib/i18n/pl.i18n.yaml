@@ -825,6 +825,7 @@ twint:
     errors:
       invalidOfferStateReceived: "Otrzymano ofertę o nieprawidłowym stanie dla tego ekranu. Resetowanie."
       reportingConflict: "Błąd zgłaszania konfliktu: ${details}"
+      reportingConflictUnconfirmed: "Nie udało się potwierdzić zgłoszenia — koordynator nie odpowiedział na czas. Najprawdopodobniej jednak dotarło. Nie wysyłaj go ponownie; odczekaj chwilę i sprawdź status transakcji, a jeśli się nie zmieni, skontaktuj się z pomocą."
 
   paymentProcess:
     title: Proces Płatności

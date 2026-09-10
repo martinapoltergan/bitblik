@@ -522,6 +522,19 @@ class ActiveOfferNotifier extends StateNotifier<Offer?> {
   /// would have expired by then.
   static const Duration _cancelledLookbackWindow = Duration(hours: 24);
 
+  /// States in which a taker still has a claim on a trade, so its local record
+  /// must survive the coordinator re-listing the offer to somebody else. From
+  /// [OfferStatus.blikSentToMaker] onwards the withdrawal code is out of the
+  /// taker's hands and their money may already be gone.
+  static const Set<OfferStatus> _takerClaimStatuses = {
+    OfferStatus.blikSentToMaker,
+    OfferStatus.expiredSentBlik,
+    OfferStatus.takerCharged,
+    OfferStatus.invalidBlik,
+    OfferStatus.conflict,
+    OfferStatus.dispute,
+  };
+
   bool _isTakerOnlyOfferForUser(Offer offer, String? myPubkey) {
     return myPubkey != null &&
         offer.takerPubkey == myPubkey &&
@@ -712,6 +725,21 @@ class ActiveOfferNotifier extends StateNotifier<Offer?> {
         final hydrated = Offer.fromJson(remote);
         if (_isTakerOnlyOfferForUser(localOffer, myPubkey) &&
             !_userParticipatesInOffer(hydrated, myPubkey)) {
+          // The coordinator re-lists an offer once a reservation lapses, which
+          // clears the taker and is normally reason enough to drop it from this
+          // user's history. But not once they have something at stake: after the
+          // code has been handed over, the cash may already have left their
+          // account, and deleting the row takes away the very trade they need to
+          // point at. Seen in production — a taker whose code expired reported
+          // being charged, and the trade vanished from the app while the
+          // coordinator was still holding the maker's sats for them.
+          if (_takerClaimStatuses.contains(localOffer.status)) {
+            Logger.log.w(
+              () =>
+                  '[ActiveOfferNotifier] keeping relisted taker offer ${localOffer.id}: local ${localOffer.statusRaw} means the user still has a claim',
+            );
+            continue;
+          }
           Logger.log.i(
             () =>
                 '[ActiveOfferNotifier] deleting relisted taker offer ${localOffer.id}; coordinator cleared local user ownership',

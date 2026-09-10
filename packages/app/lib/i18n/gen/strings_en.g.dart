@@ -4334,6 +4334,9 @@ class Translations$taker$waitConfirmation$errors$en {
 
 	/// en: 'Error reporting conflict: ${details}'
 	String reportingConflict({required Object details}) => 'Error reporting conflict: ${details}';
+
+	/// en: 'We could not confirm the report — the coordinator did not answer in time. It most likely did go through. Do not send it again; wait a moment and check the trade status, and contact support if it does not change.'
+	String get reportingConflictUnconfirmed => 'We could not confirm the report — the coordinator did not answer in time. It most likely did go through. Do not send it again; wait a moment and check the trade status, and contact support if it does not change.';
 }
 
 // Path: taker.paymentProcess.states
@@ -6211,6 +6214,7 @@ extension on Translations {
 			'taker.waitConfirmation.feedback.conflictReported' => 'Conflict reported. Coordinator will review the situation.',
 			'taker.waitConfirmation.errors.invalidOfferStateReceived' => 'Received an offer with an invalid state for this screen. Resetting.',
 			'taker.waitConfirmation.errors.reportingConflict' => ({required Object details}) => 'Error reporting conflict: ${details}',
+			'taker.waitConfirmation.errors.reportingConflictUnconfirmed' => 'We could not confirm the report — the coordinator did not answer in time. It most likely did go through. Do not send it again; wait a moment and check the trade status, and contact support if it does not change.',
 			'taker.paymentProcess.title' => 'Payment Process',
 			'taker.paymentProcess.waitingForOfferUpdate' => 'Waiting for offer status update...',
 			'taker.paymentProcess.states.preparing' => 'Preparing to send payment...',

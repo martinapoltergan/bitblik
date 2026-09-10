@@ -711,6 +711,7 @@ taker:
     errors:
       invalidOfferStateReceived: "Prijatá ponuka s neplatným stavom pre túto obrazovku. Resetuje sa."
       reportingConflict: "Chyba pri nahlasovaní konfliktu: ${details}"
+      reportingConflictUnconfirmed: "Nahlásenie sa nepodarilo potvrdiť — spojenie s koordinátorom vypršalo. Hlásenie mu pravdepodobne došlo. Neposielaj ho znova, počkaj chvíľu a skontroluj stav obchodu; ak sa nezmení, ozvi sa podpore."
 
   paymentProcess:
     title: Priebeh platby
