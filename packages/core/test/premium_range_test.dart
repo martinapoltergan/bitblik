@@ -46,6 +46,19 @@ void main() {
       expect(discountOnly.clamp(0), -1);
     });
 
+    test('a discount deeper than the cap is clamped to it', () {
+      expect(PremiumRange.maxDiscountPercent, 20);
+      final deep = PremiumRange.sanitized(min: -99, max: 3);
+      expect(deep.min, -20);
+      expect(deep.max, 3);
+      expect(deep.clamp(-50), -20);
+      // A discount-only range entirely past the cap pins to it.
+      expect(PremiumRange.sanitized(min: -60, max: -30),
+          PremiumRange.sanitized(min: -20, max: -20));
+      // Exactly at the cap is kept as configured.
+      expect(PremiumRange.sanitized(min: -20, max: 3).min, -20);
+    });
+
     test('a premium locks fewer sats, a discount more', () {
       expect(PremiumRange.adjustedSats(100000, 0), 100000);
       expect(PremiumRange.adjustedSats(100000, 3), 97000);
@@ -93,6 +106,18 @@ void main() {
       final fromEvent = viaNostr(info);
       expect(fromEvent.minPremiumPercent, -3);
       expect(fromEvent.premiumRange, PremiumRange.sanitized(min: -3, max: 3));
+    });
+
+    test('an advertised discount past the cap cannot widen the client range',
+        () {
+      // A coordinator advertising -99 must not let the app offer, or save as
+      // a default, anything deeper than the cap.
+      final info =
+          CoordinatorInfo.fromJson(baseJson()..['min_premium_percent'] = -99);
+      expect(info.premiumRange, PremiumRange.sanitized(min: -20, max: 3));
+      expect(viaNostr(info).premiumRange.min, -20);
+      final record = CoordinatorRecord(pubkeyHex: 'a' * 64, info: info);
+      expect(record.premiumRange.min, -20);
     });
 
     test('record exposes the range, defaulting to none without info', () {

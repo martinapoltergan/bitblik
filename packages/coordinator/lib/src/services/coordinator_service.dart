@@ -157,8 +157,15 @@ PremiumRange parsePremiumRangeConfig({
     return value;
   }
 
-  final min = parse('MIN_PREMIUM', minPremium);
+  var min = parse('MIN_PREMIUM', minPremium);
   final max = parse('MAX_PREMIUM', maxPremium);
+  const cap = PremiumRange.maxDiscountPercent;
+  if (min < -cap) {
+    final capText = cap.toStringAsFixed(0);
+    onInvalid?.call('MIN_PREMIUM=$min is a deeper discount than the '
+        '$capText% cap; using MIN_PREMIUM=-$capText.');
+    min = -cap;
+  }
   final range = PremiumRange.sanitized(min: min, max: max);
   if (range.min != min || range.max != max) {
     onInvalid?.call('MIN_PREMIUM ($min) is above MAX_PREMIUM ($max); using '
@@ -2405,6 +2412,12 @@ class CoordinatorService {
     // Premium reduces the sats the maker locks for the same fiat amount; a
     // discount (negative premium) increases them.
     final satsAmount = PremiumRange.adjustedSats(baseSats, premium);
+    // MAX_AMOUNT_SATS caps what the coordinator holds and later pays out, and
+    // a discount makes that more than the base amount checked above.
+    if (satsAmount > _maxAmountSats) {
+      throw Exception('Amount $satsAmount sats after the ${-premium}% '
+          'discount exceeds maximum $_maxAmountSats sats');
+    }
 
     // Maker fee is charged on the original market value, unaffected by premium.
     final makerFees = OfferQuote.makerFeeSats(baseSats, _makerFeePercentage);

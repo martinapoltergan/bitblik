@@ -133,9 +133,10 @@ class PremiumChip extends StatelessWidget {
 /// allows [range]:
 /// - market price (0) when premium pricing is off or the coordinator allows
 ///   neither a premium nor a discount;
-/// - the maker's [defaultPreference] clamped to [range] until they move the
-///   slider themselves;
-/// - otherwise their [current] choice, clamped to [range].
+/// - the maker's [defaultPreference] clamped to [range] while the form still
+///   holds market price and they have not moved the slider themselves;
+/// - otherwise the [current] value, clamped to [range], so switching
+///   coordinators keeps a premium or discount the form already shows.
 double resolvePremiumForCoordinator({
   required bool premiumEnabled,
   required PremiumRange range,
@@ -144,5 +145,6 @@ double resolvePremiumForCoordinator({
   required double defaultPreference,
 }) {
   if (!premiumEnabled || !range.isOffered) return 0;
-  return range.clamp(userAdjusted ? current : defaultPreference);
+  final unset = !userAdjusted && current == 0;
+  return range.clamp(unset ? defaultPreference : current);
 }

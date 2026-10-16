@@ -18,14 +18,20 @@ class PremiumRange {
   /// No premium and no discount: only market price.
   static const PremiumRange none = PremiumRange._(0, 0);
 
+  /// Deepest discount (%) any range may allow. A discount raises the sats in
+  /// the hold invoice and the payout, so neither an operator typo nor a
+  /// coordinator's advertisement can push a maker past this.
+  static const double maxDiscountPercent = 20;
+
   /// Builds a range from advertised or configured bounds, replacing anything
   /// unusable with market price:
   /// - a bound that is not finite or outside `(-100, 100)` becomes `0`;
+  /// - a bound below `-maxDiscountPercent` is raised to it;
   /// - when `min > max`, `min` falls back to `0` (no discount), and `max`
   ///   too if it is still below `min`.
   factory PremiumRange.sanitized({double min = 0, double max = 0}) {
-    var lo = _isValidBound(min) ? min : 0.0;
-    var hi = _isValidBound(max) ? max : 0.0;
+    var lo = _isValidBound(min) ? _capDiscount(min) : 0.0;
+    var hi = _isValidBound(max) ? _capDiscount(max) : 0.0;
     if (lo > hi) {
       lo = 0;
       if (hi < lo) hi = 0;
@@ -35,6 +41,9 @@ class PremiumRange {
 
   static bool _isValidBound(double value) =>
       value.isFinite && value > -100 && value < 100;
+
+  static double _capDiscount(double value) =>
+      value < -maxDiscountPercent ? -maxDiscountPercent : value;
 
   /// Whether a maker can choose anything other than market price.
   bool get isOffered => min < 0 || max > 0;

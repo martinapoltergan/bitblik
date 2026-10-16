@@ -63,6 +63,24 @@ void main() {
       );
     });
 
+    test('switching coordinators keeps a premium the maker already has', () {
+      // Not moved by hand, but already non-zero (for example the default as
+      // clamped by the previous coordinator): kept, clamped to the new range.
+      expect(resolve(range: discountRange, current: 2, defaultPreference: 5), 2);
+      expect(
+        resolve(range: discountRange, current: -2, defaultPreference: -5),
+        -2,
+      );
+      expect(
+        resolve(
+          range: PremiumRange.sanitized(max: 1),
+          current: 2,
+          defaultPreference: 5,
+        ),
+        1,
+      );
+    });
+
     test('a discount-only coordinator still shows the slider', () {
       final discountOnly = PremiumRange.sanitized(min: -2);
       expect(discountOnly.isOffered, isTrue);

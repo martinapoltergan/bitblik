@@ -186,11 +186,14 @@ With both unset, makers can only offer market price. For example,
 3% premium. Requests outside the range are clamped, not rejected. Values must
 be between -100 and 100 (exclusive) and `MIN_PREMIUM` must not exceed
 `MAX_PREMIUM`; otherwise the coordinator logs a warning and uses `0` for the
-invalid bound. Both limits are advertised in the coordinator info as
-`min_premium_percent` (only when not `0`) and `max_premium_percent`. The maker
-fee is always charged on the market value, and `MIN_AMOUNT_SATS` /
-`MAX_AMOUNT_SATS` are checked against the market value, before the premium or
-discount is applied.
+invalid bound. A discount deeper than 20% is never allowed: a lower
+`MIN_PREMIUM` is raised to `-20` with a warning, and apps apply the same cap to
+what a coordinator advertises. Both limits are advertised in the coordinator
+info as `min_premium_percent` (only when not `0`) and `max_premium_percent`.
+The maker fee is always charged on the market value. `MIN_AMOUNT_SATS` is
+checked against the market value; `MAX_AMOUNT_SATS` is checked against both
+the market value and the discounted amount, so a discount can never put more
+than `MAX_AMOUNT_SATS` into the hold invoice.
 
 ## Memory Profiling
 

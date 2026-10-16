@@ -75,6 +75,17 @@ void main() {
       expect(warnings, hasLength(1));
     });
 
+    test('a MIN_PREMIUM deeper than the cap is clamped with a warning', () {
+      final range = parse('-50', '3');
+      expect(range.min, -PremiumRange.maxDiscountPercent);
+      expect(range.max, 3);
+      expect(warnings, hasLength(1));
+      expect(warnings.single, contains('MIN_PREMIUM'));
+      expect(warnings.single, isNot(contains('above MAX_PREMIUM')));
+      expect(parse('-20', '3').min, -20);
+      expect(warnings, isEmpty);
+    });
+
     test('MIN_PREMIUM above MAX_PREMIUM drops the minimum to 0', () {
       expect(parse('2', '1'), PremiumRange.sanitized(min: 0, max: 1));
       expect(warnings, hasLength(1));
@@ -143,9 +154,9 @@ void main() {
     }
 
     Future<Map<String, dynamic>> initiate(
-            CoordinatorService svc, double premium) =>
+            CoordinatorService svc, double premium, {double fiat = 20}) =>
         svc.initiateOfferFiat(
-          fiatAmount: 20,
+          fiatAmount: fiat,
           makerId: maker,
           category: OfferCategory.atm,
           bank: 'tatrabanka',
@@ -186,6 +197,21 @@ void main() {
       expect(discounted['totalAmountSats'],
           (discounted['amountSats'] as int) + (market['makerFees'] as int));
       expect(holdInvoiceAmounts[1], discounted['totalAmountSats']);
+    });
+
+    test('a discount cannot push the hold invoice past MAX_AMOUNT_SATS',
+        () async {
+      // 130 EUR is ~239.6k sats at the mocked rate: under the default 250k
+      // maximum at market price and at -3%, over it at -5%.
+      final svc = await service(PremiumRange.sanitized(min: -5, max: 3));
+      final allowed = await initiate(svc, -3, fiat: 130);
+      expect(allowed['amountSats'] as int, lessThanOrEqualTo(250000));
+      await expectLater(
+        initiate(svc, -5, fiat: 130),
+        throwsA(predicate((e) => '$e'.contains('exceeds maximum'))),
+      );
+      // The rejected request never reached the wallet.
+      expect(holdInvoiceAmounts, hasLength(1));
     });
 
     test('out-of-range requests are clamped, not rejected', () async {
